@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --watch --mode=development",
-    "build": "webpack --mode=production"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +14,12 @@
     "webpack-cli": "^4.7.2"
   }
 }
-
 {
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
 }
