@@ -1,24 +1,36 @@
 # House Price Trend in Bay Area
 ## Table of contents
-  - [Table of contents](#table-of-contents)
   - [Background and overview](#background-and-overview)
-  - [Technologies & Architechture](#technologies--architechture)
+  - [Technologies](#technologies)
   - [Wireframes](#wireframes)
   - [Project features](#project-features)
+  - [Timeline](#timeline)
   - [Project link](#project-link)
+  - [Project features](#project-features)
 ## Background and overview
-San Francisco Bay Area has known as 'Bay Area' that consisted of nine counties including, San Francisco, San Mateo, Santa Clara, Alemeda, Contra Costa, Solano, Napa, Sonoma, and Marin. House price in the Bay Area has been booming over the years. It appears that the house prices in this area is continuing to increase as the demand has grastically increased and continue to grow. In this project, the data visualization will represented the data of house price trend in different counties.
+San Francisco Bay Area has known as 'Bay Area' that consisted of nine counties including, San Francisco, San Mateo, Santa Clara, Alemeda, Contra Costa, Solano, Napa, Sonoma, and Marin. House price in the Bay Area has been booming over the years. It appears that the house prices in this area is continuing to increase as the demand to buy house has drastically increased and continue to grow. In this project, the data visualization will represented the data of house price trend in different counties.
 
 ## Technologies
 * JavaScript
-* D3.js
+* D3.js 
 * HTML5
 * CSS
 * API
 ## Wireframes
 ![alt text](https://github.com/nichathong/javascript_project/blob/main/images/wireframe.jpg)
 ## Project features
+* Include house price data comparing between the each counties
+* Having interactive charts, users can hover over the graphs to see the exact data
+* Graph re-render with new data every time you select different counties or go abck to the homepage
+
+## Timeline
+* Monday: gathering data and decide how to cut the date. Drafting the graphs
+* Tuesday: add Javascript and start working interactive visualisation
+* Wednesday: finishing off the project
+* Thursday: check for any mistakes
+
 ## Project link
+
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
 
