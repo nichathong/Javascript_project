@@ -14,12 +14,12 @@ San Francisco Bay Area has known as 'Bay Area' that consisted of nine counties i
 * D3.js
 * HTML5
 * CSS
+* API
 ## Wireframes
-![Wireframes](https://drive.google.com/file/d/1cTsBLbMwH-_iQiMq7Qim8LIuB0ZPG7KK/view?usp=sharing)
+![alt text](https://github.com/nichathong/javascript_project/blob/main/images/wireframe.jpg)
 ## Project features
 ## Project link
-
-BCCC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 
 <!-- Background
