@@ -1,22 +1,26 @@
 # House Price Trend in Bay Area
 ## Table of contents
-## Background and overview
-## Technologies & Architechture
-## Wireframes
-## Project features
-## Project link
-## 
-
-
-
-- [House Price Trend in Bay Area](#house-price-trend-in-bay-area)
   - [Table of contents](#table-of-contents)
   - [Background and overview](#background-and-overview)
   - [Technologies & Architechture](#technologies--architechture)
   - [Wireframes](#wireframes)
   - [Project features](#project-features)
   - [Project link](#project-link)
-  - [](#)
+## Background and overview
+San Francisco Bay Area has known as 'Bay Area' that consisted of nine counties including, San Francisco, San Mateo, Santa Clara, Alemeda, Contra Costa, Solano, Napa, Sonoma, and Marin. House price in the Bay Area has been booming over the years. It appears that the house prices in this area is continuing to increase as the demand has grastically increased and continue to grow. In this project, the data visualization will represented the data of house price trend in different counties.
+
+## Technologies
+* JavaScript
+* D3.js
+* HTML5
+* CSS
+## Wireframes
+![Wireframes](https://wireframe.cc/6VGu4R)
+## Project features
+## Project link
+
+
+
 
 <!-- Background
 A 1-2 paragraph description of your project, providing the necessary context for someone unfamiliar with your project to understand what it does.
