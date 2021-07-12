@@ -1,10 +1,22 @@
 # House Price Trend in Bay Area
+## Table of contents
 ## Background and overview
 ## Technologies & Architechture
 ## Wireframes
 ## Project features
 ## Project link
 ## 
+
+
+
+- [House Price Trend in Bay Area](#house-price-trend-in-bay-area)
+  - [Table of contents](#table-of-contents)
+  - [Background and overview](#background-and-overview)
+  - [Technologies & Architechture](#technologies--architechture)
+  - [Wireframes](#wireframes)
+  - [Project features](#project-features)
+  - [Project link](#project-link)
+  - [](#)
 
 <!-- Background
 A 1-2 paragraph description of your project, providing the necessary context for someone unfamiliar with your project to understand what it does.
@@ -47,4 +59,3 @@ Thursday Morning
 It can be quite hard to estimate how long parts of your project might take. Don't worry if you end up straying from this timeline; the goal is to have a plan in place for what you'll do & in what order, and to have a tentative pace.
 
 You should also be aware that presentations will be Thursday afternoon, and deploying your project to GitHub Pages or Heroku will take some time Thursday morning, so don't plan much for that morning. -->
-
