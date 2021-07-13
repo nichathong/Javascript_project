@@ -1,42 +1,71 @@
+// const width = 900;
+// const height = 600;
 
-// var svg = d3.select("svg"),
-//   width = +svg.attr("width"),
-//   height = +svg.attr("height");
+// const svg = d3
+// .select('body')
+// .append('svg')
+// .attr('width', width)
+// .attr('height', height);
 
-// // Map and projection
-// var path = d3.geoPath();
-// var projection = d3.geoMercator()
-//   .scale(70)
-//   .center([0,20])
-//   .translate([width / 2, height / 2]);
+// const projection = d3.geoMercator().scale(140)
+//     .translate([width / 2, height / 1.4]);
+// const path = d3.geoPath(projection);
 
-// // Data and color scale
-// var data = d3.map();
-// var colorScale = d3.scaleThreshold()
-//   .domain([100000, 1000000, 10000000, 30000000, 100000000, 500000000])
-//   .range(d3.schemeBlues[7]);
+// const g = svg.append('g');
 
-// // Load external data and boot
-// d3.queue()
-//   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-//   .defer(d3.csv, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world_population.csv", function(d) { data.set(d.code, +d.pop); })
-//   .await(ready);
+// d3.json("Bay_Area_Counties.geojson")
+//     .then(data => {
 
-// function ready(error, topo) {
+//         const countries = topojson.feature(data, data.features);
+//         g.selectAll('path').data(countries.features).enter().append('path').attr('class', 'country').attr('d', path);
 
-//   // Draw the map
-//   svg.append("g")
-//     .selectAll("path")
-//     .data(topo.features)
-//     .enter()
-//     .append("path")
-//       // draw each country
-//       .attr("d", d3.geoPath()
-//         .projection(projection)
-//       )
-//       // set the color of each country
-//       .attr("fill", function (d) {
-//         d.total = data.get(d.id) || 0;
-//         return colorScale(d.total);
-//       });
-//     }
+//     });
+// const width = 900;
+// const height = 600;
+
+//worked!
+// var w = 500;
+// var h = 600;
+// var canvas = d3.select("body").append("svg")
+//     .attr("width", w)
+//     .attr("height", h)
+
+// d3.json("Bay_Area_Counties.geojson", function (data) {
+//     var group = canvas.selectAll("g")
+//         .data(data.features)
+//         .enter()
+//         .append("g")
+
+//     var projection = d3.geoMercator();
+//     var path = d3.geoPath(projection);
+
+//     var areas = group.append("path")
+//         .attr("d", path)
+//         .attr("class", "area")
+//         .attr("fill", "steelblue");
+// });
+
+var w = 1000;
+var h = 500;
+
+var projection = d3.geoMercator()
+  .center([-123, 38]) // as you had
+  .scale(10000) // or whatever
+  .translate([w/2,h/2])
+
+
+var path = d3.geoPath().projection(projection);
+
+var svg = d3.select(".county-container")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+d3.json("Bay_Area_Counties.geojson", function (data) {
+    svg.selectAll('path')
+            .data(data.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr("fill", "steelblue")
+});
