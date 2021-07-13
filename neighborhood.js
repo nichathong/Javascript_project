@@ -115,11 +115,19 @@ d3.csv("median-house-price.csv", function(data){
                 }
             })
             .on('mouseover', function(d) {
+                d3.selectAll(".county")
+                    .transition()
+                    .duration(200)
+                    .style("opacity", .5)
                 d3.select(this)
-                    .style("stroke", "white")
-                    .style("stroke-width", 2)
-                    .style("cursor", "pointer");
-                // .text(d.properties.name);
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 15)
+                    .style("stroke", "black")
+
+                d3.select(".county")
+                    .text(d.county)
+                    .text("here is my text");
 
                 // d3.select(".females")
                 //     .text(d.details && d.details.females && "Female " + d.details.females || "¯\\_(ツ)_/¯");
@@ -127,16 +135,24 @@ d3.csv("median-house-price.csv", function(data){
                 // d3.select(".males")
                 //     .text(d.details && d.details.males && "Male " + d.details.males || "¯\\_(ツ)_/¯");
 
-                // d3.select('.details')
-                //     .style('visibility', "visible")
+                d3.select('.details')
+                    .style('visibility', "visible")
             })
             .on('mouseout', function (d) {
+                d3.selectAll(".Country")
+                    .transition()
+                    .duration(200)
+                    .style("opacity", .8)
                 d3.select(this)
-                    .style("stroke", null)
-                    .style("stroke-width", 0.25);
+                    .transition()
+                    .duration(200)
+                    .style("stroke", "transparent")
+                // d3.select(this)
+                //     .style("stroke", null)
+                //     .style("stroke-width", 0.25);
 
-                d3.select('.details')
-                    .style('visibility', "hidden");
+                // d3.select('.details')
+                //     .style('visibility', "hidden");
             })
             
     });
