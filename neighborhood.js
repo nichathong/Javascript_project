@@ -49,8 +49,8 @@ var w = 1000;
 var h = 500;
 
 var projection = d3.geoMercator()
-  .center([-123, 38]) // as you had
-  .scale(10000) // or whatever
+  .center([-123, 38]) 
+  .scale(10000) 
   .translate([w/2,h/2])
 
 
@@ -61,11 +61,85 @@ var svg = d3.select(".county-container")
     .attr("width", w)
     .attr("height", h);
 
-d3.json("Bay_Area_Counties.geojson", function (data) {
-    svg.selectAll('path')
-            .data(data.features)
+    //create color palette for house price
+var color = d3.scaleLinear()
+        .domain([400000, 2000000])
+        .range(['#feedde','#fdbe85','#fd8d3c','#d94701']);
+
+    //look into  data, iterate over ""median-house-price.csv"" find the max value in the price col
+d3.csv("median-house-price.csv", function(data){
+    color.domain([
+        0, d3.max(data, function(d) {return d.price; })
+    ]);
+
+    d3.json("Bay_Area_Counties.geojson", function (json) {
+        //join data together
+        for (let i = 0; i < data.length; i++) {
+            let counties = data[i].county;
+            // console.log(data[i].county);
+            // console.log(counties);  
+            var val = data[i].price;
+            // console.log(data);
+            // console.log(data[i].price);
+
+            for (let j = 0; j < json.features.length; j++) {
+                let bayCounties = json.features[j].properties.county;
+                // console.log(bayCounties);
+                // console.log(json);
+                if (counties === bayCounties) { // county name are matche
+                    // console.log(counties === bayCounties)
+                    // console.log(housePrice);
+                    json.features[j].properties.value = val;
+                    // console.log(json.features[j].properties.value) 
+                    break;
+                }
+            }
+        }
+        svg.selectAll('path')
+            .data(json.features)
             .enter()
             .append("path")
+            .attr("countyName", function (d) {
+                return d.properties.county;
+            })
             .attr("d", path)
-            .attr("fill", "steelblue")
+            .style("fill", function(d) {
+                var value = d.properties.value;
+
+                // console.log(value);
+                if (value) {
+                    // console.log(color(value))
+                   return color(value); 
+                } else {
+                    return "#780278"
+                }
+            })
+            .on('mouseover', function(d) {
+                d3.select(this)
+                    .style("stroke", "white")
+                    .style("stroke-width", 2)
+                    .style("cursor", "pointer");
+                // .text(d.properties.name);
+
+                // d3.select(".females")
+                //     .text(d.details && d.details.females && "Female " + d.details.females || "¯\\_(ツ)_/¯");
+
+                // d3.select(".males")
+                //     .text(d.details && d.details.males && "Male " + d.details.males || "¯\\_(ツ)_/¯");
+
+                // d3.select('.details')
+                //     .style('visibility', "visible")
+            })
+            .on('mouseout', function (d) {
+                d3.select(this)
+                    .style("stroke", null)
+                    .style("stroke-width", 0.25);
+
+                d3.select('.details')
+                    .style('visibility', "hidden");
+            })
+            
+    });
+  
 });
+
