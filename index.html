@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="stylesheet" href="mycss.css"/>
     <script src="./dist/main.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>  
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha512-wNH6xsp2n8CfB91nrBtfc4sfLwYPBMjSWVUwQOp60AYYXH6i8yCwuKFZ4rgK2i6pQek/b+bSyR7b01/922IBzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="neighborhood.js"></script>
+    <script type="module" src="d3-legend.js"></script>
     <title>Project Name</title>
 </head>
 
@@ -30,8 +33,23 @@
             </div>
         </div>
     </div>
+    <div class="d3-legend">
+        <script type="module" src="d3-legend.js"></script>
+    </div>
     <script src="neighborhood.js"></script>
+    <div class='my-legend'>
+        <div class='legend-title'>Median House Price in Bay Area</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#feedde;'></span>less than 600k</li>
+                <li><span style='background:#fdbe85;'></span>600k-900k</li>
+                <li><span style='background:#fd8d3c;'></span>900k- 1.5M</li>
+                <li><span style='background:#d94701;'></span>greater than 1.5M</li>
 
+            </ul>
+    </div>
+<div class='legend-source'>Source: <a href="#link to source">Name of source</a></div>
+</div>
     <footer>
         <div class="footer">
             <p>here is my footer</p> 

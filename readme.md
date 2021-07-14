@@ -15,7 +15,7 @@ San Francisco Bay Area has known as 'Bay Area' that consisted of nine counties i
 * D3.js 
 * HTML5
 * CSS
-* API
+* SODA API
 ## Wireframes
 ![alt text](https://github.com/nichathong/javascript_project/blob/main/images/wireframe.jpg)
 ## Project features

@@ -63,7 +63,7 @@ var svg = d3.select(".county-container")
 
     //create color palette for house price
 var color = d3.scaleLinear()
-        .domain([400000, 2000000])
+        .domain([600000, 800000, 1000000, 1500000])
         .range(['#feedde','#fdbe85','#fd8d3c','#d94701']);
 
     //look into  data, iterate over ""median-house-price.csv"" find the max value in the price col
