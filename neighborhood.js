@@ -95,6 +95,13 @@ d3.csv("median-house-price.csv", function(data){
                 }
             }
         }
+
+        //add tooltip
+        var mapTooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")               
+            .attr("id", "mapTooltip")
+            .style("opacity", 0);
+
         svg.selectAll('path')
             .data(json.features)
             .enter()
@@ -115,6 +122,16 @@ d3.csv("median-house-price.csv", function(data){
                 }
             })
             .on('mouseover', function(d) {
+                mapTooltip.transition()
+                    .duration(500)
+                    .style("opacity", .9)
+
+                var tip = "<strong>" + d.properties.county + "</strong></br>"
+                
+                mapTooltip.html(tip) 
+                    .style("left", (d3.event.pageX) + "px")     
+                    .style("top", (d3.event.pageY - 28) + "px"); 
+
                 d3.selectAll(".county")
                     .transition()
                     .duration(200)
@@ -129,16 +146,13 @@ d3.csv("median-house-price.csv", function(data){
                     .text(d.county)
                     .text("here is my text");
 
-                // d3.select(".females")
-                //     .text(d.details && d.details.females && "Female " + d.details.females || "¯\\_(ツ)_/¯");
-
-                // d3.select(".males")
-                //     .text(d.details && d.details.males && "Male " + d.details.males || "¯\\_(ツ)_/¯");
-
                 d3.select('.details')
                     .style('visibility', "visible")
             })
             .on('mouseout', function (d) {
+                mapTooltip.transition()        
+                    .duration(500)      
+                    .style("opacity", 0);  
                 d3.selectAll(".Country")
                     .transition()
                     .duration(200)
@@ -147,13 +161,51 @@ d3.csv("median-house-price.csv", function(data){
                     .transition()
                     .duration(200)
                     .style("stroke", "transparent")
-                // d3.select(this)
-                //     .style("stroke", null)
-                //     .style("stroke-width", 0.25);
 
-                // d3.select('.details')
-                //     .style('visibility', "hidden");
             })
+        //get county name
+        svg.selectAll(".county-circle")
+            .data(json.features)
+            .enter()
+            .append("circle")
+            .attr("r", 2)
+            .attr("cx", function(d) {
+                var coords = projection([-122.01052900085348, 38.09289899771702])
+                // console.log(d.geometry.coordinates)
+                // console.log(d)
+                // console.log(coords);
+                return coords[0];
+            })
+            .attr("cy", function(d) {
+                var coords = projection([-122.01052900085348, 38.09289899771702])
+                return  coords[1];
+            })
+
+        svg.selectAll(".city-label")
+            .data(json.features)
+            .enter().append("text")
+            .attr("class", "county-label")
+            .attr("x", function(d) {
+                var coords = projection([-122.01052900085348, 38.09289899771702])
+                // console.log(d.geometry.coordinates)
+                // console.log(d)
+                // console.log(coords);
+                return coords[0];
+            })
+            .attr("y", function(d) {
+                var coords = projection([-122.01052900085348, 38.09289899771702])
+                return  coords[1];
+            })
+            .text(function(d) {
+                // return (d.properties.county);
+                return "Alemeda"
+            })
+            .attr("dx", 10)
+            .attr("dy", 5)
+
+
+
+
             
     });
   
