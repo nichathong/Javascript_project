@@ -1,28 +1,66 @@
 body {
-    margin: auto;
+
 }
+
 .heading {
     text-align: center;
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
-.county-container {
-    float: right;
-    width: 700px;
-    height: 1000px;
-    background-color: aquamarine;
 
+.content{
+    background-color: rgb(243, 243, 243);
+    height: 1200px;
+    box-shadow: 0px 0px 8px 0px #888888;
+    overflow:hidden;
+   
+}
+
+.content-container{
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    padding-top: 25px;
 
 }
+
 .charts-container {
     float: left;
-    width: ;
-    height: 1000px;
-    background-color: rgb(208, 250, 253);
+    width: 700px;
+    height: 500px;
 }
+
+.charts-container h2{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.county-container {
+    float: left;
+    width: 700px;
+    height: 700px;
+    margin-left: auto;
+}
+
 .county-container h2 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.summary{
+width: 750px;
+margin-top: 800px;
+margin-left: auto;
+margin-right: auto;
+font-size: 16pt;
+font-style: italic;
+}
+
+.summary p{
+    text-align: center;
 }
 
 
@@ -94,14 +132,15 @@ div.tooltip {
    }
 footer {
     position: relative;
-      margin-top: -180px;
+    margin-top: -50px;
+    padding-top: 100px;
   /* negative value of footer height */
     height: 100px;
     clear: both;
-    background-color: red;
 }
 
-
-
+footer p{
+    text-align: center;
+}
 
 

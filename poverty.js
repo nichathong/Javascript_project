@@ -294,9 +294,9 @@
 
 
 
-var margin = {top: 10, right: 30, bottom: 20, left: 50},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 70, right: 10, bottom: 100, left: 100},
+    width = 700 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
 
 var svgx = d3.select(".charts-container")
     .append("svg")
@@ -317,17 +317,36 @@ d3.csv("poverty-data.csv", function(data) {
     var x = d3.scaleBand()
         .domain(groups)
         .range([0, width])
-        .padding([0.2])
+        .padding([.1])
     svgx.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).tickSize(0));
+        .call(d3.axisBottom(x).tickSize(3))
+        .selectAll("text")
+          .attr("transform", "translate(-10, 0)rotate(-45)")
+          .style("text-anchor", "end");
+    svgx.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width / 1.65)
+        .attr("y", height + 80)
+        .text("Bay Area's Counties");
+        
+
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([0, 40])
+        .domain([0, 20])
         .range([ height, 0 ]);
     svgx.append("g")
         .call(d3.axisLeft(y));
+    svgx.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", -50)
+        .attr("x", -50)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Poverty Rate (%)");
 var xSubgroup = d3.scaleBand()
     .domain(subgroups)
     .range([0, x.bandwidth()])
