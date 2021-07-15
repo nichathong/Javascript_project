@@ -347,31 +347,62 @@ d3.csv("poverty-data.csv", function(data) {
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Poverty Rate (%)");
-var xSubgroup = d3.scaleBand()
-    .domain(subgroups)
-    .range([0, x.bandwidth()])
-    .padding([0.05])
+    var xSubgroup = d3.scaleBand()
+        .domain(subgroups)
+        .range([0, x.bandwidth()])
+        .padding([0.05])
 
-  // color palette = one color per subgroup
-  var color = d3.scaleOrdinal()
-    .domain(subgroups)
-    .range(['#760dff','#0dffdf'])
+    // color palette = one color per subgroup
+    var color = d3.scaleOrdinal()
+        .domain(subgroups)
+        .range(['#760dff','#0dffdf'])
 
-  // Show the bars
-  svgx.append("g")
-    .selectAll("g")
-    // Enter in data = loop group per group
-    .data(data)
-    .enter()
-    .append("g")
-    .attr("transform", function(d) { return "translate(" + x(d.county) + ",0)"; })
-    .selectAll("rect")
-    .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
-    .enter().append("rect")
-    .attr("x", function(d) { return xSubgroup(d.key); })
-    .attr("y", function(d) { return y(d.value); })
-    .attr("width", xSubgroup.bandwidth())
-    .attr("height", function(d) { return height - y(d.value); })
-    .attr("fill", function(d) { return color(d.key); });
+    // Show the bars
+    svgx.append("g")
+        .selectAll("g")
+        // Enter in data = loop group per group
+        .data(data)
+        .enter()
+        .append("g")
+        .attr("transform", function(d) { return "translate(" + x(d.county) + ",0)"; })
+        .selectAll("rect")
+        .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
+        .enter().append("rect")
+        .on("mouseover", onMouseOver) //add listenter to the event
+        .on("mouseout", onMouseOut) 
+        .attr("x", function(d) { return xSubgroup(d.key); })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("width", xSubgroup.bandwidth())
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(600)
+        // .delay(function(d, i) {reuturn i * 50})
+        .attr("height", function(d) { return height - y(d.value); })
+        .attr("fill", function(d) { return color(d.key); });
+
+        //MouseOver event handler
+        function onMouseOver(d, i) {
+            d3.select(this).attr('class', 'highlight')
+            d3.select(this)
+                .transition() //add animation
+                .duration(300)
+                .attr('width', xSubgroup.bandwidth() + 10)
+                .attr('y', function(d) {return y(d.value) - 10})
+                .attr('height', function(d) {return height - y(d.value);})
+                .attr("fill", "#d87093")
+        }
+
+        //mouseOut
+        function onMouseOut(d, i) {
+            d3.select(this).attr('class', 'bar')
+            d3.select(this)
+                .transition()
+                .duration(300)
+                .attr('width', xSubgroup.bandwidth())
+                .attr('y', function(d) {return y(d.value);})
+                .attr('height', function(d) {return height - y(d.value);})
+                .attr("fill", function (d) {return color(d.key);})
+            
+        }
 
 });
