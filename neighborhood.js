@@ -1,56 +1,10 @@
-// const width = 900;
-// const height = 600;
 
-// const svg = d3
-// .select('body')
-// .append('svg')
-// .attr('width', width)
-// .attr('height', height);
-
-// const projection = d3.geoMercator().scale(140)
-//     .translate([width / 2, height / 1.4]);
-// const path = d3.geoPath(projection);
-
-// const g = svg.append('g');
-
-// d3.json("Bay_Area_Counties.geojson")
-//     .then(data => {
-
-//         const countries = topojson.feature(data, data.features);
-//         g.selectAll('path').data(countries.features).enter().append('path').attr('class', 'country').attr('d', path);
-
-//     });
-// const width = 900;
-// const height = 600;
-
-//worked!
-// var w = 500;
-// var h = 600;
-// var canvas = d3.select("body").append("svg")
-//     .attr("width", w)
-//     .attr("height", h)
-
-// d3.json("Bay_Area_Counties.geojson", function (data) {
-//     var group = canvas.selectAll("g")
-//         .data(data.features)
-//         .enter()
-//         .append("g")
-
-//     var projection = d3.geoMercator();
-//     var path = d3.geoPath(projection);
-
-//     var areas = group.append("path")
-//         .attr("d", path)
-//         .attr("class", "area")
-//         .attr("fill", "steelblue");
-// });
-
-var w = 1000;
-var h = 500;
+var w = 700;
+var h = 600;
 
 var projection = d3.geoMercator()
-  .center([-123, 38]) 
-  .scale(10000) 
+  .center([-122.5, 37.8]) 
+  .scale(11000) 
   .translate([w/2,h/2])
 
 
@@ -127,6 +81,7 @@ d3.csv("median-house-price.csv", function(data){
                     .style("opacity", .9)
 
                 var tip = "<strong>" + d.properties.county + "</strong></br>"
+                var tip = tip + "<strong>Median House Price:</strong> $" + d.properties.value + "<br/>";
                 
                 mapTooltip.html(tip) 
                     .style("left", (d3.event.pageX) + "px")     
@@ -163,42 +118,52 @@ d3.csv("median-house-price.csv", function(data){
                     .style("stroke", "transparent")
 
             })
+
+            var legendData=[];
+
+            json.features.forEach(function(prop){
+
+                var val = parseFloat(prop.properties.value)
+
+                if (val) {legendData.push(val);}
+
+                
+            });
+
+            legendData.sort(function(a,b){ return a-b;});
+
+
         //get county name
         svg.selectAll(".county-circle")
-            .data(json.features)
+            .data(data)
             .enter()
             .append("circle")
             .attr("r", 2)
             .attr("cx", function(d) {
-                var coords = projection([-122.01052900085348, 38.09289899771702])
-                // console.log(d.geometry.coordinates)
-                // console.log(d)
-                // console.log(coords);
+                var coords = projection([d.lat, d.long])
+
                 return coords[0];
             })
             .attr("cy", function(d) {
-                var coords = projection([-122.01052900085348, 38.09289899771702])
+                var coords = projection([d.lat, d.long])
                 return  coords[1];
             })
 
         svg.selectAll(".city-label")
-            .data(json.features)
+            .data(data)
             .enter().append("text")
             .attr("class", "county-label")
             .attr("x", function(d) {
-                var coords = projection([-122.01052900085348, 38.09289899771702])
-                // console.log(d.geometry.coordinates)
-                // console.log(d)
-                // console.log(coords);
+                var coords = projection([d.lat, d.long])
+                console.log(d)
                 return coords[0];
             })
             .attr("y", function(d) {
-                var coords = projection([-122.01052900085348, 38.09289899771702])
+                var coords = projection([d.lat, d.long])
                 return  coords[1];
             })
             .text(function(d) {
-                // return (d.properties.county);
-                return "Alemeda"
+                return d.county;
             })
             .attr("dx", 10)
             .attr("dy", 5)

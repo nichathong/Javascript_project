@@ -1,4 +1,4 @@
-d3.select('h1').style('color', 'gray')
+d3.select('h1').style('color', '#')
 .attr('class', 'heading')
 
 
