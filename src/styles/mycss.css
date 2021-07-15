@@ -10,8 +10,16 @@ body {
 .charts-container h3 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+.charts-container p {
+    text-align: center;
     font-style: italic;
     font-weight: lighter;
+    color: rgb(119, 116, 116);
+
+
 }
 .heading {
     text-align: center;
@@ -47,7 +55,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 
 }
-
 
 .county-container {
     float: left;
@@ -116,13 +123,8 @@ font-style: italic;
 .my-legend a {
     color: #777;
 }
-/*hightlight for bar chart*/
 
-.hightlight {
-    fill: #d87093;
-}
 /*county font*/
-
 .county-label {
     font-size: 15px;
     font-weight: lighter;
@@ -145,10 +147,71 @@ div.tooltip {
     font-family: sans-serif;
     font-size:18px;
    }
+/*chart-legend*/
+
+    .my-legend2 .legend2-title {
+    text-align: left;
+    margin-left: 100px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .my-legend2 .legend2-scale ul {
+    margin-left: 100px;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .my-legend2 .legend2-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .my-legend2 ul.legend2-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .my-legend2 .legend2-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    margin-left: 100px;
+    }
+  .my-legend2 a {
+    color: #777;
+    }
+
+#tooltip-chart {   
+    position: absolute;
+    max-width: 200px;
+    height: auto;
+    padding: 5px;
+    background-color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none; /* MUI IMPORTANTE! */
+    font-family: sans-serif;
+    font-size:18px;
+   }
+
+
+
 footer {
     position: relative;
     margin-top: -50px;
-    padding-top: 100px;
+    padding-top: 80px;
   /* negative value of footer height */
     height: 100px;
     clear: both;
@@ -158,4 +221,30 @@ footer p{
     text-align: center;
 }
 
+.fab, .fas {
+    color: rgb(1, 63, 19);
+    padding: 4px 4px 4px 4px;
+    margin: 5px 5px;
+    border: 0.5px solid white;
+    border-radius: 5px;
+    background-color: white;
+    width: 60px;
+    size: 100px;
+}
+
+.fab:hover, .fas:hover{
+    box-shadow: 0 0 10px rgba(150, 150, 150, .8);
+}
+
+.icons {
+    font-size: 60px;
+    text-align: center;
+}
+
+.icons p {
+    font-family: 'Caveat', cursive;    font-weight: lighter;
+    font-size: 20px;
+    color: grey;
+    margin: 0;
+}
 
