@@ -1,9 +1,9 @@
 
 var w = 700;
-var h = 600;
+var h = 520;
 
 var projection = d3.geoMercator()
-  .center([-122.5, 37.8]) 
+  .center([-122.5, 37.9]) 
   .scale(11000) 
   .translate([w/2,h/2])
 
@@ -155,7 +155,7 @@ d3.csv("median-house-price.csv", function(data){
             .attr("class", "county-label")
             .attr("x", function(d) {
                 var coords = projection([d.lat, d.long])
-                console.log(d)
+                // console.log(d)
                 return coords[0];
             })
             .attr("y", function(d) {
@@ -168,9 +168,7 @@ d3.csv("median-house-price.csv", function(data){
             .attr("dx", 10)
             .attr("dy", 5)
 
-
-
-
+            
             
     });
   

@@ -1,3 +1,6 @@
+body {
+    margin: auto;
+}
 .heading {
     text-align: center;
     font-size: 50px;
@@ -5,20 +8,28 @@
 }
 .county-container {
     float: right;
-    position: relative;
+    width: 700px;
+    height: 1000px;
+    background-color: aquamarine;
+
 
 }
-
+.charts-container {
+    float: left;
+    width: ;
+    height: 1000px;
+    background-color: rgb(208, 250, 253);
+}
 .county-container h2 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .my-legend {
     float: right;
     display: block;
-    width: 400px;
-    position: relative;
+    width: 480px;
     bottom: 0px;
 }
 .my-legend .legend-title {
@@ -81,6 +92,15 @@ div.tooltip {
     font-family: sans-serif;
     font-size:18px;
    }
+footer {
+    position: relative;
+      margin-top: -180px;
+  /* negative value of footer height */
+    height: 100px;
+    clear: both;
+    background-color: red;
+}
+
 
 
 
