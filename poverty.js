@@ -61,7 +61,7 @@ d3.csv("poverty-data.csv", function(data) {
     // color palette = one color per subgroup
     var color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#760dff','#0dffdf'])
+        .range(['#939393','#f08e05'])
     
     // Show the bars
     svgx.append("g")
@@ -105,7 +105,7 @@ d3.csv("poverty-data.csv", function(data) {
                 .attr('width', xSubgroup.bandwidth() + 10)
                 .attr('y', function(d) {return y(d.value) - 10})
                 .attr('height', function(d) {return height - y(d.value);})
-                .attr("fill", "#d87093")
+                .attr("fill", "#504a4a")
         }
 
         //mouseOut
